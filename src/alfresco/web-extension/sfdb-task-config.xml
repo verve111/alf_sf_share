@@ -1,0 +1,117 @@
+<alfresco-config>
+	  <!-- Global config section -->
+	   <config replace="true">
+	      <flags>
+	         <!--
+	            Developer debugging setting to turn on DEBUG mode for client scripts in the browser
+	         -->
+	         <client-debug>true</client-debug>
+	
+	         <!--
+	            LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, Ctrl, Shift, Shift).
+	            This flag automatically activates logging on page load.
+	         -->
+	         <client-debug-autologging>false</client-debug-autologging>
+	      </flags>
+	   </config>
+	
+	   <config evaluator="string-compare" condition="WebFramework">
+	      <web-framework>
+	         <!-- SpringSurf Autowire Runtime Settings -->
+	         <!-- 
+	              Developers can set mode to 'development' to disable; SpringSurf caches,
+	              FreeMarker template caching and Rhino JavaScript compilation.
+	         -->
+	         <autowire>
+	            <!-- Pick the mode: "production" or "development" -->
+	            <mode>development</mode>
+	         </autowire>
+	
+	         <!-- Allows extension modules with <auto-deploy> set to true to be automatically deployed -->
+	         <!-- module-deployment>
+	            <mode>manual</mode>
+	            <enable-auto-deploy-modules>true</enable-auto-deploy-modules>
+	         </module-deployment-->
+	      </web-framework>
+	   </config>
+	   
+	<config>
+		<forms>
+			<dependencies>
+				<js src="/js/lib/jquery-1.11.1/jquery-1.11.1.min.js" />			
+				<!-- js src="/js/jquery-cron-min.js" /-->
+				<js src="/js/jquery-cron-quartz.js" />				
+				<css src="/js/jquery-cron.css" />				
+			</dependencies>
+		</forms>
+	</config>	   
+	   
+	<config evaluator="string-compare" condition="activiti$sfdbNotificationWF">
+	    <forms>
+            <form>
+                <field-visibility>
+					<show id="bpm:workflowDescription" />
+					<!-- show id="taskOwner" /-->
+					<show id="bpm:assignee" />
+					<show id="sfdb:mailFreq" />
+					<show id="bpm:sendEMailNotifications" />											
+					<show id="bpm:workflowPriority" />
+					<show id="bpm:workflowDueDate" />
+					<!-- show id="bpm:status" /-->
+                    <show id="packageItems"/>
+                </field-visibility>
+                <appearance>
+                	<!-- template="/org/alfresco/components/form/3-column-set.ftl" -->
+					<set id="emailcal" appearance="" />
+					<set id="other" appearance=""/>					
+               		<field id="sfdb:mailFreq" set="emailcal" read-only="false">
+						<control template="/controls/cron.ftl" />               		
+               		</field>
+					<field id="bpm:sendEMailNotifications" set="emailcal" read-only="false"/>
+					<field id="bpm:workflowPriority" set="other" />
+					<field id="bpm:workflowDueDate" set="other" />
+					<field id="packageItems" set="other" />																											
+                </appearance>                
+            </form>
+        </forms>
+    </config>
+    <config evaluator="task-type" condition="sfdb:notificationTask">
+        <forms>
+            <form>
+                <field-visibility>
+					<show id="bpm:workflowDescription" />
+					<show id="taskOwner" />
+					<show id="bpm:assignee" />					
+					<show id="bpm:workflowPriority" />
+					<show id="bpm:workflowDueDate" />
+					<show id="sfdb:mailFreq" />
+					<show id="bpm:sendEMailNotifications" />							
+					<!-- show id="bpm:status" /-->
+                    <show id="packageItems"/>
+                </field-visibility>
+                <!-- appearance>
+					<set id="" appearance="title" label-id="workflow.set.task.info" />
+					<set id="info" appearance="" template="/org/alfresco/components/form/3-column-set.ftl" />
+					<set id="progress" appearance="title" label-id="workflow.set.task.progress" />
+					<set id="assignee" appearance="title" label-id="workflow.set.assignee" />
+					<set id="items" appearance="title" label-id="workflow.set.items" />
+					<set id="other" appearance="title" label-id="workflow.set.other" />
+               
+					<field id="bpm:workflowDescription">
+						<control template="/org/alfresco/components/form/controls/info.ftl" />
+					</field>
+					<field id="taskOwner" set="info" />
+					<field id="bpm:workflowPriority" label-id="workflow.field.priority" set="info" read-only="true">
+						<control template="/org/alfresco/components/form/controls/workflow/priority.ftl" />
+					</field>
+					<field id="bpm:workflowDueDate" set="info" label-id="workflow.field.due">
+						<control template="/org/alfresco/components/form/controls/info.ftl" />
+					</field>
+					<field id="bpm:status" set="progress" />
+					<field id="packageItems" set="items" />
+
+                </appearance-->
+            </form>
+        </forms>
+    </config>   
+</alfresco-config>
