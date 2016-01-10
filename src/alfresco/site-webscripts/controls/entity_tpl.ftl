@@ -30,14 +30,17 @@
              <#if field.control.params.size??>size="${field.control.params.size}"</#if> 
              <#if field.disabled && !(field.control.params.forceEditable?? && field.control.params.forceEditable == "true")>disabled="true"</#if> /-->
              
-             	<input type="hidden" id="${controlId}-removed" name="${field.name}_removed"/>
-		        <#--input type="hidden" id="${controlId}-orig" name="-" value="${field.value?html}" /-->
-		        <input type="hidden" id="${controlId}-added" name="${field.name}_added" />
+             <input type="hidden" id="${controlId}-removed" name="${field.name}_removed"/>
+		     <#--input type="hidden" id="${controlId}-orig" name="-" value="${field.value?html}" /-->
+		     <input type="hidden" id="${controlId}-added" name="${field.name}_added" />
+		     
+		     <#if field.value == "">
+	      		 <script type="text/javascript">//<![CDATA[
+					YAHOO.util.Event.onContentReady("${controlId}-added", function () {
+						getDefaultEntityTemplateId(this);
+				 	}, this);
+				 //]]></script>
+            </#if>			   		        
       <#--@formLib.renderFieldHelp field=field /-->
-      		<script type="text/javascript">//<![CDATA[
-			YAHOO.util.Event.onContentReady("${controlId}-added", function () {
-				getDefaultEntityTemplateId(this);
-			}, this);
-		//]]></script>  
    </#if>
 </div>
