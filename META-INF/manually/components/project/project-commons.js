@@ -327,7 +327,7 @@
             ret += this.getPriorityImg(record, large);
          }
 
-         ret += '<a class="theme-color-1" href="' + (full ? propertiesUrl : dataListUrl) + '" title="' + (full ? "" : this.msg("actions.entity.view-tasks")) + '">' + code + "&nbsp;-&nbsp;" + $html(title) + '</a></span>' + version;
+         ret += '<a class="theme-color-1" href="' + (full ? folderUrl : dataListUrl) + '" title="' + (full ? "" : this.msg("actions.entity.view-tasks")) + '">' + code + "&nbsp;-&nbsp;" + $html(title) + '</a></span>' + version;
 
          return ret;
       },

@@ -427,11 +427,11 @@
 
                         record.jsNode = {};
                         record.jsNode.type = record.itemType;
-
+						
+						var title = record.itemData["prop_cm_name"].displayValue
                         var thumbName = record.itemData["prop_cm_name"].value, recordSiteName = record.site != null ? record.site.shortName
                               : null, extn = record.itemType.substring(record.itemType.lastIndexOf(":")+1), nodeRef = new Alfresco.util.NodeRef(
-                              record.nodeRef), docDetailsUrl = beCPG.util.entityURL(recordSiteName,
-                              record.nodeRef, record.itemType);
+                              record.nodeRef), docDetailsUrl = beCPG.util.entityDocumentsURL(record.siteId, record.path, title);
 
                         if (this.options.simpleView) {
                            /**
