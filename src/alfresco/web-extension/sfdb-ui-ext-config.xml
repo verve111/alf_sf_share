@@ -7,28 +7,6 @@
 		</forms>
 	</config>	
 	<!-- on edit -->
-	<!-- config condition="pjt:project" evaluator="node-type">
-		<forms>
-			<form>
-				<field-visibility>
-					<hide id="bcpg:code" />				
-					<hide id="pjt:projectHierarchy2" />					
-					<hide id="pjt:projectOrigin" />
-					<hide id="pjt:projectSponsor" />
-					<hide id="pjt:projectEntity" />
-					<show id="bcpg:entityTplRef" />																		
-				</field-visibility>
-				<appearance>
-					<set id="dummy" appearance=""/>		
-					<field id="cm:name" set="mainInfo" label="Owner"/>
-					<field id="cm:title" set="mainInfo" label="Site Address"/>												
-					<field id="bcpg:entityTplRef" help-id="becpg.forms.help.entityTplRef" set="dummy">
-						<control template="/controls/entity_tpl.ftl"/>
-					</field>					
-				</appearance>					
-			</form>									
-		</forms>
-	</config-->
 	<config condition="pjt:project" evaluator="node-type" replace="true">
 		<forms>
 			<form >
