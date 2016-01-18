@@ -11,8 +11,7 @@ function isNodeRef(value) {
 
 function getDefaultEntityTemplateId(control) {
 	if (control) {
-		var prefix = Alfresco.constants.PROXY_URI.replace("share/proxy/", "");
-		var url = prefix + 'service/projecttpl';
+		var url = Alfresco.constants.PROXY_URI + 'projecttpl';
 		var responseSuccess = function(o) {
 			var response = JSON.parse(o.responseText);
 			var projectDefaultTemplate = response.res;
