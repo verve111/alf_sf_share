@@ -14,7 +14,9 @@
 					<show id="cm:name" />
 					<hide id="bcpg:code" />
 					<show id="cm:title" force="true" />
-					<show id="pjt:partner" />					
+					<!-- hide existing assoc -->
+					<!-- show id="pjt:partner" /-->
+					<show id="pjt:projectPartner" />					
 					<show id="cm:description" force="true" />
 					<show id="pjt:projectHierarchy1" />
 					<show id="pjt:projectHierarchy2" />
@@ -69,7 +71,7 @@
 
 					<field id="cm:name" set="mainInfo" label="Owner"/>
 					<field id="cm:title" set="mainInfo" label="Site Address"/>
-					<field id="pjt:partner" set="mainInfo" label="Partner" />
+					<field id="pjt:projectPartner" set="mainInfo" label="Partner" />
 					<field id="cm:description" set="mainInfo" />
 					<field id="bcpg:code" read-only="true" set="mainInfo" />
 					<field id="pjt:projectHierarchy1" help-id="becpg.forms.help.projectHierarchy1" set="mainInfo">
@@ -208,7 +210,9 @@
 					<hide id="bcpg:code" />
 					<show id="cm:name" />
 					<show id="cm:title" force="true" />					
-					<show id="pjt:partner" />
+					<!-- hide existing assoc -->
+					<!-- show id="pjt:partner" /-->
+					<show id="pjt:projectPartner" />
 					<show id="cm:description" force="true" />
 
 					<show id="pjt:projectHierarchy1" />
@@ -244,7 +248,7 @@
 
 					<field id="cm:name" set="mainInfo" label="Owner"/>
 					<field id="cm:title" set="mainInfo" label="Site Address" />
-					<field id="pjt:partner" set="mainInfo" label="Partner" />					
+					<field id="pjt:projectPartner" set="mainInfo" label="Partner" />					
 					<field id="cm:description" set="mainInfo" />
 					<field id="bcpg:code" read-only="true" set="mainInfo" />
 					<field id="pjt:projectHierarchy1" set="mainInfo">
