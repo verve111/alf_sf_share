@@ -11,13 +11,18 @@
 		<forms>
 			<form >
 				<field-visibility>
-					<show id="cm:name" />
 					<hide id="bcpg:code" />
-					<show id="cm:title" force="true" />
-					<!-- hide existing assoc -->
-					<!-- show id="pjt:partner" /-->
-					<show id="pjt:projectPartner" />					
+					<show id="cm:name" />					
 					<show id="cm:description" force="true" />
+					<!-- title == owner1 -->					
+					<show id="cm:title" force="true" />
+					<!-- hide existing assoc (pjt:partner), show projectPartner -->
+					<!-- show id="pjt:partner" /-->
+					<show id="pjt:projectPartner" />
+					<show id="pjt:projectOwner1Email"/>
+					<show id="pjt:projectOwner2Email"/>					
+					<show id="pjt:projectOwner1Phone"/>						
+					<show id="pjt:projectOwner2Phone"/>										
 					<show id="pjt:projectHierarchy1" />
 					<show id="pjt:projectHierarchy2" />
 					<hide id="pjt:projectOrigin" />
@@ -69,10 +74,18 @@
 					<set id="audit" appearance="bordered-panel" label-id="becpg.forms.set.audit.label"
 						template="/org/alfresco/components/form/2-column-set.ftl" />
 
-					<field id="cm:name" set="mainInfo" label="Owner"/>
-					<field id="cm:title" set="mainInfo" label="Site Address"/>
-					<field id="pjt:projectPartner" set="mainInfo" label="Partner" />
-					<field id="cm:description" set="mainInfo" />
+					<field id="cm:name" set="mainInfo" label="Site Address"/>
+					<field id="cm:description" set="mainInfo" />					
+					<field id="cm:title" set="mainInfo" label="Owner1"/>
+					<field id="pjt:projectPartner" set="mainInfo" label="Owner2" />
+					<field id="pjt:projectOwner1Email" set="mainInfo" label="Email (Owner1)">
+					</field>
+					<field id="pjt:projectOwner2Email" set="mainInfo" label="Email (Owner2)">
+						
+					</field>
+					<field id="pjt:projectOwner1Phone" set="mainInfo" label="Phone (Owner1)" />
+					<field id="pjt:projectOwner2Phone" set="mainInfo" label="Phone (Owner2)" />					
+						
 					<field id="bcpg:code" read-only="true" set="mainInfo" />
 					<field id="pjt:projectHierarchy1" help-id="becpg.forms.help.projectHierarchy1" set="mainInfo">
 						<control template="/org/alfresco/components/form/controls/autocomplete.ftl">
@@ -209,11 +222,16 @@
 				<field-visibility>
 					<hide id="bcpg:code" />
 					<show id="cm:name" />
-					<show id="cm:title" force="true" />					
-					<!-- hide existing assoc -->
+					<show id="cm:description" force="true" />
+					<!-- title is the owner1 -->			
+					<show id="cm:title" force="true" />
+					<!-- hide existing assoc (pjt:partner), show projectPartner -->
 					<!-- show id="pjt:partner" /-->
 					<show id="pjt:projectPartner" />
-					<show id="cm:description" force="true" />
+					<show id="pjt:projectOwner1Email"/>
+					<show id="pjt:projectOwner2Email"/>					
+					<show id="pjt:projectOwner1Phone"/>					
+					<show id="pjt:projectOwner2Phone"/>					
 
 					<show id="pjt:projectHierarchy1" />
 					<show id="pjt:projectHierarchy2" />
@@ -246,10 +264,17 @@
 					<set id="audit" appearance="bordered-panel" label-id="becpg.forms.set.audit.label"
 						template="/org/alfresco/components/form/2-column-set.ftl" />
 
-					<field id="cm:name" set="mainInfo" label="Owner"/>
-					<field id="cm:title" set="mainInfo" label="Site Address" />
-					<field id="pjt:projectPartner" set="mainInfo" label="Partner" />					
-					<field id="cm:description" set="mainInfo" />
+					<field id="cm:name" set="mainInfo" label="Site Address"/>
+					<field id="cm:description" set="mainInfo" />					
+					<field id="cm:title" set="mainInfo" label="Owner1"/>
+					<field id="pjt:projectPartner" set="mainInfo" label="Owner2" />
+					<field id="pjt:projectOwner1Email" set="mainInfo" label="Email (Owner1)" />
+					<field id="pjt:projectOwner2Email" set="mainInfo" label="Email (Owner2)" />
+					<field id="pjt:projectOwner1Phone" set="mainInfo" label="Phone (Owner1)" >
+				
+					</field>
+					<field id="pjt:projectOwner2Phone" set="mainInfo" label="Phone (Owner2)">
+					</field>
 					<field id="bcpg:code" read-only="true" set="mainInfo" />
 					<field id="pjt:projectHierarchy1" set="mainInfo">
 						<control template="/org/alfresco/components/form/controls/autocomplete.ftl">
