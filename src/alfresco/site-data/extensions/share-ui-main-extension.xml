@@ -1,0 +1,18 @@
+<extension>
+  <modules>
+	<module>
+		<id>Deliverable Gantt</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.documentlibrary</targetPackageRoot>
+				<sourcePackageRoot>custom-doclib-rss</sourcePackageRoot>
+                <!-- dependencies>
+                    <js>/res/components/gantt/gantt-columnRenderers-custom.js</js>
+                </dependencies-->				
+			</customization>
+		</customizations>
+	</module>   
+  </modules>	
+</extension>
