@@ -1,16 +1,27 @@
 <extension>
   <modules>
+  	<module>
+		<id>SFDB Deliverable Gantt</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.entity-charact-views</targetPackageRoot>
+				<sourcePackageRoot>custom-delivery-gantt</sourcePackageRoot>
+                <!-- dependencies>
+                    <js>/res/components/gantt/gantt-columnRenderers-custom.js</js>
+                </dependencies-->				
+			</customization>
+		</customizations>
+	</module>  
 	<module>
-		<id>Deliverable Gantt</id>
+		<id>SFDB Custom Doclib RSS</id>
 		<version>1.0</version>
 		<auto-deploy>true</auto-deploy>
 		<customizations>
 			<customization>
 				<targetPackageRoot>org.alfresco.components.documentlibrary</targetPackageRoot>
 				<sourcePackageRoot>custom-doclib-rss</sourcePackageRoot>
-                <!-- dependencies>
-                    <js>/res/components/gantt/gantt-columnRenderers-custom.js</js>
-                </dependencies-->				
 			</customization>
 		</customizations>
 	</module>   
