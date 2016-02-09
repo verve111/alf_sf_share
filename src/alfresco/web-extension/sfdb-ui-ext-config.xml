@@ -124,7 +124,7 @@
 					</field>
 					<field id="pjt:projectState" help-id="becpg.forms.help.projectState" set="mainInfo">
 						<control template="/org/alfresco/components/form/controls/selectone.ftl">
-							<control-param name="options">Planned|data.taskstate.planned,InProgress|data.taskstate.inprogress,OnHold|data.taskstate.onhold,Cancelled|data.taskstate.cancelled,Completed|data.taskstate.completed
+							<control-param name="options">Planned|data.projectstate.planned,InProgress|data.projectstate.inprogress,OnHold|data.projectstate.onhold,Cancelled|data.projectstate.cancelled,Completed|data.projectstate.completed
 							</control-param>
 						</control>
 					</field>
@@ -313,7 +313,7 @@
 					</field>
 					<field id="pjt:projectState" set="mainInfo">
 						<control template="/org/alfresco/components/form/controls/selectone.ftl">
-							<control-param name="options">Planned|data.taskstate.planned,InProgress|data.taskstate.inprogress,OnHold|data.taskstate.onhold,Cancelled|data.taskstate.cancelled,Completed|data.taskstate.completed
+							<control-param name="options">Planned|data.projectstate.planned,InProgress|data.projectstate.inprogress,OnHold|data.projectstate.onhold,Cancelled|data.projectstate.cancelled,Completed|data.projectstate.completed
 							</control-param>
 						</control>
 					</field>

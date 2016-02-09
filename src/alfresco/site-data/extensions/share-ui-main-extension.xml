@@ -24,6 +24,39 @@
 				<sourcePackageRoot>custom-doclib-rss</sourcePackageRoot>
 			</customization>
 		</customizations>
-	</module>   
+	</module>
+	<module>
+		<id>SFDB PrjList Dashlet Messages</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.dashlets</targetPackageRoot>
+				<sourcePackageRoot>custom-dashlet-project-list</sourcePackageRoot>
+			</customization>
+		</customizations>
+	</module>
+	<module>
+		<id>SFDB Project Page Messages</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.project</targetPackageRoot>
+				<sourcePackageRoot>custom-project-component</sourcePackageRoot>
+			</customization>
+		</customizations>
+	</module>
+	<module>
+		<id>SFDB Project Page Filter Messages</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.project.filter</targetPackageRoot>
+				<sourcePackageRoot>custom-project-filter-component</sourcePackageRoot>
+			</customization>
+		</customizations>
+	</module> 	 	  
   </modules>	
 </extension>
