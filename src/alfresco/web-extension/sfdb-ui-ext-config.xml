@@ -5,6 +5,14 @@
 				<js src="/js/entity-tpl.js" />				
 			</dependencies>
 		</forms>
+	</config>
+	<config evaluator="string-compare" condition="Analytics" replace="true">
+		<providers>
+			<!-- provider index="3">
+				<provider-id>beCPG</provider-id>
+				<provider-url>http://www.becpg.fr/becpg-project-community-2.0.4.png</provider-url>
+			</provider-->
+		</providers>
 	</config>	
 	<!-- on edit -->
 	<config condition="pjt:project" evaluator="node-type" replace="true">
