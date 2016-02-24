@@ -45,6 +45,14 @@
 				<targetPackageRoot>org.alfresco.components.project</targetPackageRoot>
 				<sourcePackageRoot>custom-project-component</sourcePackageRoot>
 			</customization>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.form</targetPackageRoot>
+				<sourcePackageRoot>custom-form-component</sourcePackageRoot>
+			</customization>			
+			<customization>
+				<targetPackageRoot>org.alfresco.modules.entity-datagrid.forms</targetPackageRoot>
+				<sourcePackageRoot>custom-entity-datagrid</sourcePackageRoot>
+			</customization>			
 		</customizations>
 	</module>
 	<module>
