@@ -15,7 +15,7 @@
 		</customizations>
 	</module>  
 	<module>
-		<id>SFDB Custom Doclib RSS</id>
+		<id>SFDB Custom Doclib/Discuss RSS</id>
 		<version>1.0</version>
 		<auto-deploy>true</auto-deploy>
 		<customizations>
@@ -23,6 +23,10 @@
 				<targetPackageRoot>org.alfresco.components.documentlibrary</targetPackageRoot>
 				<sourcePackageRoot>custom-doclib-rss</sourcePackageRoot>
 			</customization>
+			<customization>
+				<targetPackageRoot>org.alfresco.modules.discussions.rss</targetPackageRoot>
+				<sourcePackageRoot>custom-discuss-rss</sourcePackageRoot>
+			</customization>			
 		</customizations>
 	</module>
 	<module>

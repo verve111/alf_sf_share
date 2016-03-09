@@ -1,5 +1,6 @@
 var feedArgs = url.templateArgs["feedArgs"];
 var regexpGroups = /\/site\/([\w|-]+)\/documentLibrary\//.exec(feedArgs);
+// docliburl:http://localhost:8080/share/feedservice/components/documentlibrary/feed/all/site/some2/documentLibrary/oo2/prj_template_folder?filter=path&filterData=%2Foo2%2Fprj_template_folder&format=rss
 if (regexpGroups && model.filterData) {
 	var siteId = regexpGroups[1];
 	if (siteId) {
