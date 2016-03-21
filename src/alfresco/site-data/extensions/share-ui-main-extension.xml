@@ -30,6 +30,17 @@
 		</customizations>
 	</module>
 	<module>
+		<id>SFDB Calendar Cron Extension</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.calendar</targetPackageRoot>
+				<sourcePackageRoot>custom-calendar</sourcePackageRoot>
+			</customization>
+		</customizations>
+	</module>	
+	<module>
 		<id>SFDB PrjList Dashlet Messages</id>
 		<version>1.0</version>
 		<auto-deploy>true</auto-deploy>
