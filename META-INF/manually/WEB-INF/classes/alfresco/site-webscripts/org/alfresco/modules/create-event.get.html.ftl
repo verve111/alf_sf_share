@@ -104,7 +104,15 @@
             <h2>Email Notification</h2>
          </div>		 
          <div class="yui-gd">
-            <div class="yui-u first"><label for="${el}-title">Notification date:</label></div>
+            <div class="yui-u first"><label for="${el}-cron-isactive">Active:</label></div>
+            <#if (event.isactive?? && event.isactive == "true")>
+            <div class="yui-u"><input id="${el}-cron-isactive" type="checkbox" name="isactive" tabindex="4" checked="checked"/></div>
+            <#else>
+            <div class="yui-u"><input id="${el}-cron-isactive" type="checkbox" name="isactive" tabindex="5"/></div>
+            </#if>
+         </div>			 
+         <div class="yui-gd">
+            <div class="yui-u first"><label for="${el}-cron">Notification date:</label></div>
             <div class="yui-u">
 			   <input id="${el}-cron" type="hidden" name="cron" readonly value="${event.cronExpr!"0 0 0 ? * 2"}"/>
                <span id="${el}-cron-span">
@@ -121,7 +129,9 @@
 						}
 					});
 				}, this);
-			//]]></script> 			 
+			//]]></script> 	
+
+			
 		 
          <#if config.script.config.enableDocFolder="true">
             <div class="yui-g">
