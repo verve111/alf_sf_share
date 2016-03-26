@@ -110,7 +110,25 @@
             <#else>
             <div class="yui-u"><input id="${el}-cron-isactive" type="checkbox" name="isactive" tabindex="5"/></div>
             </#if>
-         </div>			 
+         </div>		
+         <!-- Recipients -->		 
+         <div class="yui-gd">
+            <div class="yui-u first">Recipients:</div>
+            <div class="yui-u">
+               <ul id="${el}-recipients" class="recipients suppress-validation"></ul>
+               <button id="${el}-selectRecipients-button" tabindex="6">${msg("button.select")}</button>
+            </div>
+         </div>
+         <!-- Authority Picker -->
+         <div class="hidden">
+            <div id="${el}-authority-picker" class="recipients-form authority-picker">
+               <div class="hd">Recipients</div>
+               <div class="bd">
+                  <div id="${el}-authority-finder" class="authority-finder"></div>
+               </div>
+            </div>
+         </div>		 
+		 <!-- Cron Picker -->
          <div class="yui-gd">
             <div class="yui-u first"><label for="${el}-cron">Notification date:</label></div>
             <div class="yui-u">
@@ -120,6 +138,22 @@
 			</div>
          </div>		 
 			<script type="text/javascript">//<![CDATA[
+				YAHOO.util.Event.onContentReady('${el}-authority-finder', function () {
+					var picker = new Alfresco.module.UserPicker("${el}", {recipients: ${event.recipients!"null"}});
+					var buttonId = "${el}-selectRecipients-button";
+					YAHOO.util.Event.on(buttonId, 'click', function(e) {
+						picker.onSelectRecipientsClick(e);
+						
+					    //e.cancelBubble is supported by IE - this will kill the bubbling process.
+					    e.cancelBubble = true;
+					    e.returnValue = false;
+
+					    //e.stopPropagation for other browsers
+					    if ( e.stopPropagation ) e.stopPropagation();
+					    if ( e.preventDefault ) e.preventDefault();
+					 });
+				}, this);				
+			
 				YAHOO.util.Event.onContentReady("${el}-cron-span", function () {
 					$('#${el}-cron-span').cron({
 						initial: "${event.cronExpr!"0 0 0 ? * 2"}",

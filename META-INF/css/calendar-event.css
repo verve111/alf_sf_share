@@ -1,0 +1,109 @@
+/*
+  this file renamed from email-form.css
+*/
+
+
+.recipients-form
+{
+   width: 60em;
+}
+
+/*.create-event input[type="text"],
+.create-event textarea
+{
+   margin-right: 0.5em;
+   width: 32em;
+}
+
+.create-event textarea
+{
+   height: 10em;
+}
+
+.create-event textarea
+{
+   float: left;
+}*/
+
+.recipients-form.authority-picker .authority-finder
+{
+   margin: 0;
+}
+
+.recipients-form.authority-picker .authority-finder .finder-wrapper
+{
+   border: none;
+   margin-top: 0;
+}
+
+
+.create-event .recipients
+{
+   max-height: 10em;
+   overflow-y: auto;
+   padding-left: 0;
+   width: 32.5em;
+   float: left;
+}
+
+.create-event .recipients li
+{
+   float: left;
+   margin-bottom: 5px;
+   margin-top: 5px;
+   padding: 0 3px 0 0;
+   position: relative;
+}
+
+.create-event .recipients li a
+{
+   background-position: 2px 4px;
+   background-repeat: no-repeat;
+   margin: 1px;
+   padding: 4px 0 4px 22px;
+   text-decoration: none;
+   white-space: nowrap;
+}
+
+.create-event .recipients li.user a
+{
+   background-image: url(../components/images/user-16.png);
+}
+
+.create-event .recipients li.group a
+{
+   background-image: url(../components/images/group-16.png);
+}
+
+
+.create-event .recipients li a .add,
+.create-event .recipients li a .remove
+{
+   margin: 0 0 0 4px;
+   padding: 0 0 0 16px;
+   visibility: hidden;
+}
+
+.create-event .recipients li a:link
+{
+   color: #448;
+}
+
+.create-event .recipients li a:visited
+{
+   color: #667;
+}
+
+.create-event .recipients li a:hover,
+.create-event .recipients li a.hover
+{
+   border: 1px solid #C5D6E2;
+   margin: 0;
+}
+
+.create-event .recipients li a:hover .remove,
+.create-event .recipients li a.hover .remove
+{
+   background: #fff url(images/remove-16.png) no-repeat 2px 0px;
+   visibility: visible;
+} 
