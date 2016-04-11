@@ -91,6 +91,18 @@
 				<sourcePackageRoot>custom-footer</sourcePackageRoot>
 			</customization>
 		</customizations>
-	</module> 	 	 	  
+	</module> 	
+		<module>
+			<id>SFDB Custom User Form</id>
+			<version>1.0</version>
+			<auto-deploy>true</auto-deploy>
+			<customizations>
+				<customization>
+					<targetPackageRoot>org.alfresco.components.console.usersgroups
+					</targetPackageRoot>
+					<sourcePackageRoot>custom-user-form</sourcePackageRoot>
+				</customization>
+			</customizations>
+		</module>
   </modules>	
 </extension>
