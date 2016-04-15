@@ -92,17 +92,28 @@
 			</customization>
 		</customizations>
 	</module> 	
-		<module>
-			<id>SFDB Custom User Form</id>
-			<version>1.0</version>
-			<auto-deploy>true</auto-deploy>
-			<customizations>
-				<customization>
-					<targetPackageRoot>org.alfresco.components.console.usersgroups
-					</targetPackageRoot>
-					<sourcePackageRoot>custom-user-form</sourcePackageRoot>
-				</customization>
-			</customizations>
-		</module>
+	<module>
+		<id>SFDB Custom User Form</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.console.usersgroups
+				</targetPackageRoot>
+				<sourcePackageRoot>custom-user-form</sourcePackageRoot>
+			</customization>
+		</customizations>
+	</module>
+    <module>
+      <id>SFDB Upper Black Menu</id>
+      <version>1.0</version>
+      <auto-deploy>true</auto-deploy>
+      <customizations>
+        <customization>
+          <targetPackageRoot>org.alfresco.share.header</targetPackageRoot>
+          <sourcePackageRoot>custom-menu</sourcePackageRoot>
+        </customization>
+      </customizations>
+    </module>	
   </modules>	
 </extension>
