@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Alfresco Customization" default="deploy" basedir=".">
+<project name="Alfresco Customization" default="deploy" xmlns:artifact="antlib:org.apache.maven.artifact.ant" basedir=".">
 	<property file="build.properties" />
 	<property name="project.dir" value="." />
 	<property name="build.dir" value="${project.dir}/build" />
@@ -13,6 +13,14 @@
 	<!--property name="web.dir" value="${project.dir}/web" /-->
 	<!--property name="extension.dir" value="/web-extension" /-->
 
+	<path id="maven-ant-tasks.classpath" path="${user.home}/.ant/lib/maven-ant-tasks-2.1.3.jar" />
+	<typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+	       uri="antlib:org.apache.maven.artifact.ant"
+	       classpathref="maven-ant-tasks.classpath" />
+    <artifact:dependencies   pathId="deps.fileset.compile"  useScope ="compile"> 
+        <pom file="pom.xml"/> 
+    </artifact:dependencies>	
+	
 	<target name="clean" description="Removes all generated files">
 		<!--delete dir="${bin.dir}" /-->	
 		<delete dir="${build.dir}" />
@@ -40,7 +48,7 @@
 	<target name="package-extension" description="Creates a jar called ${package.file.jar} which can be deployed on top of an exploded Alfresco web app">
 		<delete file="${package.file.jar}" />
 		<jar jarfile="${package.file.jar}">
-			<zipfileset dir="${src.dir}" />
+			<zipfileset dir="${bin.dir}" />
 			<zipfileset dir="${metainf.dir}" prefix="META-INF"/>			
 			<!--zipfileset dir="${bin.dir}/alfresco/extension/de/evaluators" prefix="alfresco/extension/de/evaluators"/>
 			<zipfileset dir="${web.dir}" excludes="META-INF/**" /-->
@@ -57,16 +65,19 @@
 		</copy>
 	</target>	
 	
+-->
+	
 	<target name="compile" description="compiles src to the build/classes folder">
 		<javac srcdir="${src.dir}" destdir="${bin.dir}" source="1.6" target="1.6" debug="on" fork="yes">
-			<classpath refid="classpath.embedded" />
+			<!--classpath refid="classpath.embedded" /-->
+			<classpath refid="deps.fileset.compile" />
 		</javac>
 		<copy todir="${bin.dir}">
 			<fileset dir="${src.dir}" excludes="**/*.java"/>
 		</copy>
-	</target-->
+	</target>	
 	
-	<target name="deploy" depends="clean, setup, package-extension" 
+	<target name="deploy" depends="clean, compile, setup, package-extension" 
 			description="Unzips the ${package.file.zip} into ${alfresco.web.dir}">
 		<!-- unzip src="${package.file.zip}" dest="${share.web.dir}" /-->
 		<copy file="${package.file.jar}" todir="${alfresco.web.lib}"/>
