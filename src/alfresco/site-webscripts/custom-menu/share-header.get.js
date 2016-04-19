@@ -3,15 +3,50 @@ var widget, widgetsToRemove = [ "HEADER_SHARED_FILES", "HEADER_MY_FILES", "HEADE
                                 "HEADER_SEARCH", "HEADER_BECPG", "HEADER_REPOSITORY", "HEADER_SITES_MENU", "HEADER_HOME",
                                 "HEADER_SITE_MEMBERS", "HEADER_USER_MENU_HELP", "HEADER_USER_MENU_PASSWORD", "HEADER_USER_MENU_PROFILE",
                                 "HEADER_SITE_DASHBOARD", "HEADER_SITE_CALENDAR", "HEADER_SITE_DISCUSSIONS-TOPICLIST",
-                                "HEADER_PROJECT-LIST", "HEADER_DATA_LISTS", "HEADER_SITE_LINKS"
+                                "HEADER_SITE_PROJECT-LIST", "HEADER_SITE_DATA-LISTS", "HEADER_SITE_LINKS", "HEADER_SITE_MORE_PAGES"
                                 
 ], idx, max;
 
-for (idx = 0, max = widgetsToRemove.length; idx < max; idx++) {
-	widgetUtils.deleteObjectFromArray(model.jsonModel, "id", widgetsToRemove[idx]);
+if (user) {
+	var userDetail = {};
+    var response = remote.call("/api/people/" + encodeURIComponent(user.name));
+    if (response.status == 200) {
+       userDetail = JSON.parse(response);
+    }
+	var isDocLib = userDetail.isDocLib;    
+	if (isDocLib) {
+		for (idx = 0, max = widgetsToRemove.length; idx < max; idx++) {
+			findAndRemoveIn(model.jsonModel.widgets, null, null, widgetsToRemove[idx]);
+		}
+	}
 }
 
-//HEADER_ADVANCED_SEARCH, HEADER_SEARCH, HEADER_SITE_MEMBERS
-//						{"pageId":"project-list"}, 
-// {"pageId":"data-lists"}, <!-- {"pageId":"blog-postlist"},--> {"pageId":"links"}
+function findAndRemoveIn(obj, arrContext, arrIdx, id) {
+	var idx, max, key;
+	if (obj !== undefined && obj !== null) {
+		if (Object.prototype.toString.apply(obj) === "[object Object]") {
+			if (obj.hasOwnProperty("id") && obj.id === id) {
+				if (arrContext !== null && arrIdx !== null) {
+					arrContext.splice(arrIdx, 1);
+				}
+				else {
+					logger.debug("Unexpected match outside of array structure: "
+									+ jsonUtils.toJSONString(obj));
+				}
+			} else {
+				for (key in obj) {
+					if (obj.hasOwnProperty(key)) {
+						findAndRemoveIn(obj[key], null, null, id);
+					}
+
+				}
+			}
+		} else if (Object.prototype.toString.apply(obj) === "[object Array]") {
+			for (idx = 0, max = obj.length; idx < max; idx++) {
+				findAndRemoveIn(obj[idx], obj, idx, id);
+			}
+		}
+	}
+}
+
 
