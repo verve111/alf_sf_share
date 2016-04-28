@@ -7,13 +7,15 @@ var widget, widgetsToRemove = [ "HEADER_SHARED_FILES", "HEADER_MY_FILES", "HEADE
                                 
 ], idx, max;
 
+var isDocLib = false;
+
 if (user) {
 	var userDetail = {};
     var response = remote.call("/api/people/" + encodeURIComponent(user.name));
     if (response.status == 200) {
        userDetail = JSON.parse(response);
     }
-	var isDocLib = userDetail.isDocLib;    
+	isDocLib = userDetail.isDocLib;    
 	if (isDocLib) {
 		for (idx = 0, max = widgetsToRemove.length; idx < max; idx++) {
 			findAndRemoveIn(model.jsonModel.widgets, null, null, widgetsToRemove[idx]);
@@ -49,4 +51,28 @@ function findAndRemoveIn(obj, arrContext, arrIdx, id) {
 	}
 }
 
+// add sfdb menu 
+createSfdbSiteMenu();
+
+function createSfdbSiteMenu() {
+	var sfdbSiteMenu = widgetUtils.findObject(model.jsonModel, "id",
+			"HEADER_SFDBSITE");
+	if (sfdbSiteMenu == null && !isDocLib) {
+		sfdbSiteMenu = {
+			id : "HEADER_SFDBSITE",
+			name : "alfresco/menus/AlfMenuBarItem",
+			config : {
+				id : "HEADER_SFDBSITE",
+				label : "SFDB Site",
+				targetUrl : "site/sfdb/dashboard",
+				widgets : []
+			}
+		};
+		var menuBar = widgetUtils.findObject(model.jsonModel, "id",
+				"HEADER_USER_MENU_BAR");
+		if (menuBar != null) {
+			menuBar.config.widgets.unshift(sfdbSiteMenu);
+		}
+	}
+}
 
