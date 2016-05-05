@@ -242,7 +242,9 @@
 
                 if (beCPG.util.isEntity(record))
                 {
-                    html = scope.getActionUrls(record).documentDetailsUrl.replace("document-details?","entity-data-lists?list=taskList&");
+					//SFDB
+					html = '#" class="filter-change" rel="' + Alfresco.DocumentList.generatePathMarkup(record.location);
+                    //html = scope.getActionUrls(record).documentDetailsUrl.replace("document-details?","entity-data-lists?list=View-properties&");
                 }
                 else
                 {
