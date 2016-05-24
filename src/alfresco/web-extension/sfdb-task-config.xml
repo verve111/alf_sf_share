@@ -10,6 +10,7 @@
 		</forms>
 	</config>	   
 	   
+	<!-- Activiti Start Event -->
 	<config evaluator="string-compare" condition="activiti$sfdbNotificationWF">
 	    <forms>
             <form>
@@ -23,26 +24,180 @@
 					<show id="bpm:workflowDueDate" />
 					<!-- show id="bpm:status" /-->
                     <show id="packageItems"/>
+                    <show id="bpm:descrDetailed"/>
                 </field-visibility>
                 <appearance>
                 	<!-- template="/org/alfresco/components/form/3-column-set.ftl" -->
 					<set id="emailcal" appearance="" />
-					<set id="other" appearance=""/>					
+					<set id="other" appearance=""/>	
+                    <field id="bpm:workflowDescription" label-id="workflow.field.message">
+	                   <control template="/org/alfresco/components/form/controls/textarea.ftl">
+	                      <control-param name="style">width: 95%</control-param>
+	                   </control>
+	                </field>									
                		<field id="sfdb:mailFreq" set="emailcal" read-only="false">
 						<control template="/controls/cron.ftl" />               		
                		</field>
 					<field id="bpm:sendEMailNotifications" set="emailcal" read-only="false"/>
 					<field id="bpm:workflowPriority" set="other" />
 					<field id="bpm:workflowDueDate" set="other" />
-					<field id="packageItems" set="other" />																											
+					<field id="packageItems" set="other" />
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
                 </appearance>                
             </form>
         </forms>
     </config>
+	<config evaluator="string-compare" condition="activiti$activitiAdhoc">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>
+    </config>    
+	<config evaluator="string-compare" condition="activiti$activitiReview">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>
+    </config>     
+	<config evaluator="string-compare" condition="activiti$activitiReviewPooled">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>
+    </config>     
+	<config evaluator="string-compare" condition="activiti$activitiParallelReview">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>
+    </config>        
+	<config evaluator="string-compare" condition="activiti$activitiParallelGroupReview">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>
+    </config> 
+	<config evaluator="string-compare" condition="activiti$activitiLifecycleApproval">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>
+    </config>  
+	<config evaluator="string-compare" condition="activiti$activitiLifecycleApproval">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>							
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>
+    </config>  
+    
+    
+    <!-- Other tasks -->
+    <config evaluator="task-type" condition="wf:activitiReviewTask">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description"  read-only="true">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>	
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>        
+    </config>    
+    
+    
     <config evaluator="task-type" condition="sfdb:notificationTask">
         <forms>
             <form>
                 <field-visibility>
+                	<show id="bpm:comment"/>
 					<show id="bpm:workflowDescription" />
 					<show id="taskOwner" />
 					<show id="bpm:assignee" />					

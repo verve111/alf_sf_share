@@ -1,0 +1,6 @@
+bpmmodel.xml:
+        <type name="bpm:task">
+               <property name="bpm:descrDetailed">
+                    <type>d:text</type>
+                </property>
+		</type>     

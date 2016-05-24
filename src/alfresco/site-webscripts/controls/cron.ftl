@@ -17,8 +17,8 @@
          <span id="${fieldHtmlId}-${field.id?replace("prop_","")}" class="viewmode-value <#if field.dataType == "mltext">viewmode-mltext</#if>"><#if fieldValue == "">${msg("form.control.novalue")}<#else>${fieldValue}</#if></span>
       </div>
    <#else>
-      <label for="${fieldHtmlId}">${field.label?html}:<#if field.mandatory><span class="mandatory-indicator">${msg("form.required.fields.marker")}</span></#if> <@formLib.renderLocaleImage field=field /></label>
-	  <input id="${fieldHtmlId}" style="width:100px;" readonly name="${field.name}" value=""/> 	  
+      <label for="${fieldHtmlId}">Email Frequency:<#if field.mandatory><span class="mandatory-indicator">${msg("form.required.fields.marker")}</span></#if> <@formLib.renderLocaleImage field=field /></label>
+	  <input id="${fieldHtmlId}" style="width:100px;" type="hidden" name="${field.name}" value=""/> 	  
       <span id="${fieldHtmlId}-croncontrol" tabindex="0"
              <#if field.control.params.password??>type="password"<#else>type="text"</#if>
              <#if field.control.params.styleClass??>class="${field.control.params.styleClass}"</#if>
