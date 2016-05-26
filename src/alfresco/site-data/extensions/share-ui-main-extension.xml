@@ -82,6 +82,17 @@
 		</customizations>
 	</module>
 	<module>
+		<id>SFDB Resources (index.jsp)</id>
+		<version>1.0</version>
+		<auto-deploy>true</auto-deploy>
+		<customizations>
+			<customization>
+				<targetPackageRoot>org.alfresco.components.head</targetPackageRoot>
+				<sourcePackageRoot>custom-resources</sourcePackageRoot>
+			</customization>
+		</customizations>
+	</module> 	
+	<module>
 		<id>SFDB Footer</id>
 		<version>1.0</version>
 		<auto-deploy>true</auto-deploy>
