@@ -191,6 +191,74 @@
             </form>
         </forms>        
     </config>    
+    <config evaluator="task-type" condition="wf:approvedTask">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description"  read-only="true">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>	
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>        
+    </config>    
+    <config evaluator="task-type" condition="wf:rejectedTask">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description"  read-only="true">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>	
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>        
+    </config>     
+    <config evaluator="task-type" condition="wf:adhocTask">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description"  read-only="true">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>	
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>        
+    </config>
+    <config evaluator="task-type" condition="wf:completedAdhocTask">
+	    <forms>
+            <form>
+                <field-visibility>
+                    <show id="bpm:descrDetailed"/>
+                </field-visibility>
+                <appearance>
+					<field id="bpm:descrDetailed" label="Description"  read-only="true">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl">
+							<control-param name="maxLength">40000</control-param>
+							<control-param name="rows">7</control-param>	
+						</control>
+					</field>
+                </appearance>                
+            </form>
+        </forms>        
+    </config>                
     
     
     <config evaluator="task-type" condition="sfdb:notificationTask">
