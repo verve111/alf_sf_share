@@ -64,7 +64,7 @@ function createSfdbSiteMenu() {
 			config : {
 				id : "HEADER_SFDBSITE",
 				label : "SFDB Site",
-				targetUrl : "site/sfdb/dashboard",
+				targetUrl : "site/sfdb/documentlibrary",
 				widgets : []
 			}
 		};
