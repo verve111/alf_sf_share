@@ -1,8 +1,24 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
-<beans>
-	<bean id="sfdb-custom-share-i18n"
-		class="fr.becpg.util.ResourceBundleBootstrapComponent">
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<bean id="connector.remoteclient" parent="connector.remoteclient.abstract"
+		class="org.alfresco.web.scripts.SlingshotRemoteClient" scope="prototype">
+		<!-- the http.connection.timeout value in milliseconds to apply to HTTP 
+			connections -->
+		<property name="connectTimeout">
+			<value>10000</value>
+		</property>
+		<!-- the http.socket.timeout value in milliseconds to apply to HTTP connections -->
+		<property name="readTimeout">
+			<value>240000</value>
+		</property>
+	</bean>
+	<bean id="sfdb-custom-share-i18n" class="fr.becpg.util.ResourceBundleBootstrapComponent">
 		<property name="resourceBundles">
 			<list>
 				<value>alfresco.web-extension.messages.becpg-project</value>
@@ -15,9 +31,10 @@
 		<property name="configs">
 			<list>
 				<value>classpath:alfresco/web-extension/sfdb-task-config.xml</value>
-				<value>classpath:alfresco/web-extension/sfdb-ui-ext-config.xml</value>				
+				<value>classpath:alfresco/web-extension/sfdb-ui-ext-config.xml
+				</value>
 			</list>
 		</property>
 	</bean>
-	<bean id="evaluator.module.IsDocLibOnly" class="com.sfdb.evaluators.IsDocLibOnly"/>
+	<bean id="evaluator.module.IsDocLibOnly" class="com.sfdb.evaluators.IsDocLibOnly" />
 </beans>
