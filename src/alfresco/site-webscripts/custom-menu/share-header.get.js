@@ -57,7 +57,10 @@ createSfdbSiteMenu();
 function createSfdbSiteMenu() {
 	var sfdbSiteMenu = widgetUtils.findObject(model.jsonModel, "id",
 			"HEADER_SFDBSITE");
-	if (sfdbSiteMenu == null && !isDocLib) {
+	var prospectsSiteMenu = widgetUtils.findObject(model.jsonModel, "id",
+			"HEADER_PROSPECTSSITE");	
+	// isDocLib - see custom lines in users.js. Hide for users with isDocLibOnly flag.
+	if (sfdbSiteMenu == null && prospectsSiteMenu == null && !isDocLib) {
 		sfdbSiteMenu = {
 			id : "HEADER_SFDBSITE",
 			name : "alfresco/menus/AlfMenuBarItem",
@@ -68,9 +71,19 @@ function createSfdbSiteMenu() {
 				widgets : []
 			}
 		};
+		prospectsSiteMenu = {
+				id : "HEADER_PROSPECTSSITE",
+				name : "alfresco/menus/AlfMenuBarItem",
+				config : {
+					label : "Prospects",
+					targetUrl : "site/sales/documentlibrary",
+					widgets : []
+				}
+			};		
 		var menuBar = widgetUtils.findObject(model.jsonModel, "id",
 				"HEADER_USER_MENU_BAR");
 		if (menuBar != null) {
+			menuBar.config.widgets.unshift(prospectsSiteMenu);			
 			menuBar.config.widgets.unshift(sfdbSiteMenu);
 		}
 	}
