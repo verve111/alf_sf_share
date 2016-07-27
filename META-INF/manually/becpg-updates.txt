@@ -1,0 +1,10 @@
+1. also read models.txt
+2. site-index.jsp. IsDocLib evaluator - if this flag is set for user then show restricted black menu
+3. /alf_sfdb_share/META-INF/manually/WEB-INF/classes/alfresco/becpg-share-config.xml. Commented in 'Cancel editing' (unlock) action.
+4. /alf_sfdb_share/META-INF/manually/components/dashlets/project-dashlet.js. 1 change: link to docLib for the Thumbnail (project title is in project-commons.js), not to proj props.
+5. /alf_sfdb_share/META-INF/manually/components/documentlibrary/custom-documentlist.js. 1 change: : link to docLib, not to proj props.
+6. /alf_sfdb_share/META-INF/manually/components/entity-charact-views/gantt-columnRenderers.js. 1 change: gantt legend (see also projectlist legend) - nowrap on resize
+7. /alf_sfdb_share/META-INF/manually/components/entity-data-lists/entity-datalists.js. 2 changes: datalist edit/change button fix. These buttons triggered page refresh earlier.
+8. /alf_sfdb_share/META-INF/manually/components/project/jsgantt.js. 1 change: time format to US (for Gantt)
+9. /alf_sfdb_share/META-INF/manually/components/project/project-commons.js 1 change: link to docLib for project title, not to proj props.
+10. /alf_sfdb_share/META-INF/manually/components/project/project-list.js 1 change: gantt legend (see also gantt-columnRenderers.js legend) - nowrap on resize
