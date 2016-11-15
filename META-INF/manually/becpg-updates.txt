@@ -8,3 +8,6 @@
 8. /alf_sfdb_share/META-INF/manually/components/project/jsgantt.js. 1 change: time format to US (for Gantt)
 9. /alf_sfdb_share/META-INF/manually/components/project/project-commons.js 1 change: link to docLib for project title, not to proj props.
 10. /alf_sfdb_share/META-INF/manually/components/project/project-list.js 1 change: gantt legend (see also gantt-columnRenderers.js legend) - nowrap on resize
+11a. /alf_sfdb_share/META-INF\manually\WEB-INF\classes\alfresco\site-webscripts\org\alfresco\modules\entity-datagrid\include\entity-datagrid.lib.ftl - project task up/down buttons added
+11b. /alf_sfdb_share\META-INF\manually\modules\entity-datagrid\entity-datagrid.js. Project task up/down buttons init + enabling/disabling 
+11c. /alf_sfdb_share\META-INF\manually\modules\entity-datagrid\entity-actions.js. Project task up/down buttons - read selected items from this.
