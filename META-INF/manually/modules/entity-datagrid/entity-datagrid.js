@@ -65,6 +65,9 @@
         this.selectedItems = {};
         this.afterDataGridUpdate = [];
         this.extraAfterDataGridUpdate = [];
+		
+		// sfdb custom
+		this.isButtonUpDownExistsOnFtl = false;
 
         this.scopeId = "";
         if (scopeable)
@@ -710,17 +713,21 @@
                                         this.onFilterFormClear);
 										
 								/** sfdb custom **/ 
-                                this.widgets.sfdbOnActionUp = Alfresco.util.createYUIButton(this,
-                                        "filterform-button-taskup", this.onActionUp);
-								var spanButton = document.getElementById(this.id + "-filterform-button-taskup").childNodes[0];
-								//remove loupe icon
-								spanButton.style.backgroundImage = "url('" + Alfresco.constants.URL_RESCONTEXT + "components/images/up-arrow-16.png')";
-								this.widgets.sfdbOnActionUp.isInit = true;
-                                this.widgets.sfdbOnActionDown = Alfresco.util.createYUIButton(this, "filterform-button-taskdown",
-                                        this.onActionDown);	
-								var spanButton = document.getElementById(this.id + "-filterform-button-taskdown").childNodes[0];
-								//remove loupe icon
-								spanButton.style.backgroundImage = "url('" + Alfresco.constants.URL_RESCONTEXT + "components/images/down-arrow-16.png')";
+								this.isButtonUpDownExistsOnFtl = document.getElementById(this.id + "-filterform-button-taskup") &&
+									document.getElementById(this.id + "-filterform-button-taskdown");
+								if (this.isButtonUpDownExistsOnFtl) {
+									this.widgets.sfdbOnActionUp = Alfresco.util.createYUIButton(this,
+											"filterform-button-taskup", this.onActionUp);
+									var spanButton = document.getElementById(this.id + "-filterform-button-taskup").childNodes[0];
+									//remove loupe icon
+									spanButton.style.backgroundImage = "url('" + Alfresco.constants.URL_RESCONTEXT + "components/images/up-arrow-16.png')";
+									this.widgets.sfdbOnActionUp.isInit = true;
+									this.widgets.sfdbOnActionDown = Alfresco.util.createYUIButton(this, "filterform-button-taskdown",
+											this.onActionDown);	
+									var spanButton = document.getElementById(this.id + "-filterform-button-taskdown").childNodes[0];
+									//remove loupe icon
+									spanButton.style.backgroundImage = "url('" + Alfresco.constants.URL_RESCONTEXT + "components/images/down-arrow-16.png')";
+								}
 								
 
                                 this.widgets.filterForm = Alfresco.util.createYUIButton(this, "filterform-button",
@@ -1594,7 +1601,7 @@
 								
 
 								/** sfdb custom **/ // only here we can disable these buttons, otherwise they are shown on init
-								if (this.widgets.sfdbOnActionUp.isInit) {
+								if (this.isButtonUpDownExistsOnFtl && this.widgets.sfdbOnActionUp.isInit) {
 									this.widgets.sfdbOnActionUp.isInit = false;
 									this.widgets.sfdbOnActionUp.set("disabled", true);
 									this.widgets.sfdbOnActionDown.set("disabled", true);
@@ -2216,7 +2223,7 @@
                                             }
 											
 											/** sfdb custom **/
-											if (isUpOrDown) {
+											if (isUpOrDown && this.isButtonUpDownExistsOnFtl) {
 												this.widgets.sfdbOnActionUp.set("disabled", disabled);
 												this.widgets.sfdbOnActionDown.set("disabled", disabled);
 											}
