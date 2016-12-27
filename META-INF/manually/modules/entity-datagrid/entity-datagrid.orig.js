@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (C) 2010-2015 beCPG. 
+ *  Copyright (C) 2010-2016 beCPG. 
  *   
  *  This file is part of beCPG 
  *   
@@ -346,7 +346,12 @@
                             /**
                              * columnForm id
                              */
-                            columnFormId : null
+                            columnFormId : null,
+                            
+                            /**
+                             * filter formId
+                             */
+                            filterFormId : "filter"
                         },
 
                         /**
@@ -751,6 +756,7 @@
                             // UI
                             // artifacts on YUI button decoration
                             Dom.setStyle(this.id + "-body", "visibility", "visible");
+
                         },
 
                         /**
@@ -822,7 +828,6 @@
                             Alfresco.util.populateHTML([ this.id + "-title",
                                     $html(this.datalistMeta.entityName + " - " + this.datalistMeta.title) ], [
                                     this.id + "-description", $links($html(this.datalistMeta.description, true)) ]);
-							
                         },
 
                         /**
@@ -887,7 +892,7 @@
 	                                                itemKind : "type",
 	                                                itemId : this.options.itemType != null ? this.options.itemType
 	                                                        : this.datalistMeta.itemType,
-	                                                formId : "filter",
+	                                                formId : this.options.filterFormId!=null ?  this.options.filterFormId :  "filter",
 	                                                list : listName
 	                                            });
 	
@@ -1040,7 +1045,6 @@
                             } else {
                                 this.onHistoryManagerReady.call(this);
                             }
-							
                         },
 
                         /**
@@ -1577,7 +1581,6 @@
                                     this.afterDataGridUpdate[i].call(this);
                                 }
                                 this.afterDataGridUpdate = [];
-								
 
                             }, this, true);
 
@@ -2450,7 +2453,15 @@
                                 this.selectedItems = {};
                                 this.afterDataGridUpdate = [];
                                 this.extraAfterDataGridUpdate = [];
-                                this.formsFilterRuntime = null;
+                                
+                                if(this.formsFilterRuntime!=null){
+                                	this.formsFilterRuntime.reset();
+                                	this.formsFilterRuntime = null;
+                                }
+                                if(this.widgets.filterForm!=null){
+                                	this.widgets.filterForm.getMenu().hide();
+                                }
+                                
                                 
 
                                 if (obj.list != null && (this.options.list == null || this.options.list.length < 1))
@@ -2675,6 +2686,8 @@
                                     {
                                         obj.callback.call(recordFound);
                                     }
+                                    
+                                    Bubbling.fire("dirtyDataTable");
                                 };
 
                                 this.afterDataGridUpdate.push(fnAfterUpdate);
@@ -2683,6 +2696,7 @@
                                 {
                                     page : this.currentPage
                                 });
+                                
 
                             }
                         },
@@ -2713,6 +2727,13 @@
                                         Alfresco.util.Anim.fadeOut(el);
                                     }
                                 }
+                                
+                                var fnAfterDelete = function EntityDataGrid_onDataItemCreated_refreshSuccess_fnAfterUpdate()
+                                {
+                                    Bubbling.fire("dirtyDataTable");
+                                };
+
+                                this.afterDataGridUpdate.push(fnAfterDelete);
 
                                 this._updateDataGrid.call(this,
                                 {

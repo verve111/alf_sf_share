@@ -480,10 +480,7 @@
 
                 if (beCPG.util.isEntity(record))
                 {
-					//SFDB
-					html = '#" class="filter-change" rel="' + Alfresco.DocumentList.generatePathMarkup(record.location);
-                    //html = scope.getActionUrls(record).documentDetailsUrl.replace("document-details?","entity-data-lists?list=View-properties&");
-					
+                    html = scope.getActionUrls(record).documentDetailsUrl.replace("document-details?","entity-data-lists?list=View-properties&");
                 }
                 else
                 {

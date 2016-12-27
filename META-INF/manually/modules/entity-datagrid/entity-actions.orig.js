@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (C) 2010-2015 beCPG. 
+ *  Copyright (C) 2010-2016 beCPG. 
  *   
  *  This file is part of beCPG 
  *   
@@ -247,18 +247,16 @@
 	   onActionUp : function EntityDataGrid_onActionUp(p_items) {
 		   var me = this;
 		   if (me.options.sortable) {
-
 			   var items = YAHOO.lang.isArray(p_items) ? p_items : [ p_items ];
 
 			   if (items.length > 0) {
 				   var recordFound = me._findPrevItemByParameter(items[0].nodeRef, "nodeRef");
 
-				   if (recordFound != null) {
-
-					   me._sort(items, recordFound, "up");
-
+				   if (recordFound == null) {
+					   recordFound = items[0];
 				   }
 
+				   me._sort(items, recordFound, "up");				   
 			   }
 
 		   }
@@ -275,17 +273,17 @@
 	   onActionDown : function EntityDataGrid_onActionDown(p_items) {
 		   var me = this;
 		   if (me.options.sortable) {
-
 			   var items = YAHOO.lang.isArray(p_items) ? p_items : [ p_items ];
 
 			   if (items.length > 0) {
 				   var recordFound = me._findNextItemByParameter(items[items.length - 1].nodeRef, "nodeRef");
 
-				   if (recordFound != null) {
-
-					   me._sort(items, recordFound, "down");
-
+				   if (recordFound == null) {
+					   recordFound = items[items.length - 1];
 				   }
+
+				  me._sort(items, recordFound, "down");
+
 
 			   }
 

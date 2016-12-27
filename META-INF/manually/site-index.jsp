@@ -41,8 +41,12 @@
 	   response.sendRedirect(request.getContextPath() + "/page/site/" + map.get("getsiteid") + "/documentlibrary");
    } else  if (siteName == null || siteName.length() == 0) 
    {
-		// forward to user specific dashboard page
-		response.sendRedirect(request.getContextPath() + "/page/user/" + URLEncoder.encode(userid) + "/dashboard");
+	     // Get and forward to user's home page
+	      SlingshotUserFactory slingshotUserFactory = 
+	              (SlingshotUserFactory) FrameworkUtil.getServiceRegistry().getUserFactory();
+	      String userHomePage = slingshotUserFactory.getUserHomePage(context, userid);
+	      response.sendRedirect(request.getContextPath() + userHomePage);
+
    }
    else
    {
