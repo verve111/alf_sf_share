@@ -44,7 +44,29 @@
 				<provider-url>http://www.becpg.fr/becpg-project-community-2.0.4.png</provider-url>
 			</provider-->
 		</providers>
-	</config>	
+	</config>
+	<!-- Doclib actions overridden -->
+	<config evaluator="string-compare" condition="DocLibActions">
+		<actions>
+			<action id="de_fme_jsconsole-open-in-jsconsole" type="javascript"
+				label="fme.action.open.in.jsconsole" icon="open-in-jsconsole">
+				<param name="function">onActionOpenInJavascriptConsole</param>
+				<evaluator>evaluator.doclib.action.disableAction</evaluator>
+				<!-- override>de_fme_jsconsole-open-in-jsconsole</override> override 
+					won't work here since we need to override evaluator in child, and evaluator 
+					always returns false (disableAction) - it will disable current child action -->
+			</action>
+			<action id="de_fme_jsconsole-dump-in-jsconsole" type="javascript"
+				label="fme.action.open.in.jsconsole" icon="dump-in-jsconsole">
+				<param name="function">onActionDumpInJavascriptConsole</param>
+				<evaluator>evaluator.doclib.action.disableAction</evaluator>
+				<!-- override>de_fme_jsconsole-open-in-jsconsole</override> override 
+					won't work here since we need to override evaluator in child, and evaluator 
+					always returns false (disableAction) - it will disable current child action -->
+			</action>			
+		</actions>
+	</config>		
+		
 	<!-- on edit -->
 	<config condition="pjt:project" evaluator="node-type" replace="true">
 		<forms>
