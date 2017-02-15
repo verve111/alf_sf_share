@@ -136,6 +136,18 @@
           <sourcePackageRoot>custom-menu</sourcePackageRoot>
         </customization>
       </customizations>
+    </module>
+    <module>
+      <id>SFDB Login Page</id>
+      <version>1.0</version>
+      <auto-deploy>true</auto-deploy>
+      <customizations>
+        <customization>
+        	<!-- remove simple + smart -->
+          <targetPackageRoot>org.alfresco.components.tradeMarkLogo</targetPackageRoot>
+          <sourcePackageRoot>custom-trademark</sourcePackageRoot>
+        </customization>
+      </customizations>    
     </module>	
   </modules>	
 </extension>
