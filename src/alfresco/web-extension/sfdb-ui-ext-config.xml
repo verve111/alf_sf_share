@@ -21,28 +21,24 @@
 			<!-- module-deployment> <mode>manual</mode> <enable-auto-deploy-modules>true</enable-auto-deploy-modules> 
 				</module-deployment -->
 		</web-framework>
-	</config>	
-    <!-- Global config section -->
-    <config replace="true">
-       <flags>
-         <!--
-            Developer debugging setting to turn on DEBUG mode for client scripts in the browser
-         -->
-         <client-debug>false</client-debug>
+	</config>
+	<!-- Global config section -->
+	<config replace="true">
+		<flags>
+			<!-- Developer debugging setting to turn on DEBUG mode for client scripts 
+				in the browser -->
+			<client-debug>false</client-debug>
 
-         <!--
-            LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, Ctrl, Shift, Shift).
-            This flag automatically activates logging on page load.
-         -->
-         <client-debug-autologging>false</client-debug-autologging>
-       </flags>
-    </config>	
-	<config evaluator="string-compare" condition="Analytics" replace="true">
+			<!-- LOGGING can always be toggled at runtime when in DEBUG mode (Ctrl, 
+				Ctrl, Shift, Shift). This flag automatically activates logging on page load. -->
+			<client-debug-autologging>false</client-debug-autologging>
+		</flags>
+	</config>
+	<config evaluator="string-compare" condition="Analytics"
+		replace="true">
 		<providers>
-			<!-- provider index="3">
-				<provider-id>beCPG</provider-id>
-				<provider-url>http://www.becpg.fr/becpg-project-community-2.0.4.png</provider-url>
-			</provider-->
+			<!-- provider index="3"> <provider-id>beCPG</provider-id> <provider-url>http://www.becpg.fr/becpg-project-community-2.0.4.png</provider-url> 
+				</provider -->
 		</providers>
 	</config>
 	<!-- Doclib actions overridden -->
@@ -63,34 +59,34 @@
 				<!-- override>de_fme_jsconsole-open-in-jsconsole</override> override 
 					won't work here since we need to override evaluator in child, and evaluator 
 					always returns false (disableAction) - it will disable current child action -->
-			</action>			
+			</action>
 		</actions>
-	</config>		
-		
+	</config>
+
 	<!-- on edit -->
 	<config condition="pjt:project" evaluator="node-type" replace="true">
 		<forms>
-			<form >
+			<form>
 				<field-visibility>
 					<hide id="bcpg:code" />
-					<show id="cm:name" />					
+					<show id="cm:name" />
 					<show id="cm:description" force="true" />
-					<!-- title == owner1 -->					
+					<!-- title == owner1 -->
 					<show id="cm:title" force="true" />
 					<!-- hide existing assoc (pjt:partner), show projectPartner -->
-					<!-- show id="pjt:partner" /-->
+					<!-- show id="pjt:partner" / -->
 					<show id="pjt:projectPartner" />
-					<show id="pjt:projectOwner1Email"/>
-					<show id="pjt:projectOwner2Email"/>					
-					<show id="pjt:projectOwner1Phone"/>						
-					<show id="pjt:projectOwner2Phone"/>										
+					<show id="pjt:projectOwner1Email" />
+					<show id="pjt:projectOwner2Email" />
+					<show id="pjt:projectOwner1Phone" />
+					<show id="pjt:projectOwner2Phone" />
 					<show id="pjt:projectHierarchy1" />
 					<show id="pjt:projectHierarchy2" />
 					<hide id="pjt:projectOrigin" />
 					<hide id="pjt:projectSponsor" />
 					<show id="pjt:projectManager" />
 					<show id="pjt:projectObservers" />
-					<!-- anyway it's always hidden in ftl fields -->						
+					<!-- anyway it's always hidden in ftl fields -->
 					<show id="bcpg:entityTplRef" force="true" />
 					<hide id="pjt:projectEntity" />
 					<show id="pjt:projectPriority" />
@@ -124,7 +120,7 @@
 
 				</field-visibility>
 				<appearance>
-					<set id="dummy" appearance=""/>
+					<set id="dummy" appearance="" />
 					<set id="mainInfo" appearance="bordered-panel"
 						label-id="becpg.forms.set.designation.label" template="/org/alfresco/components/form/2-column-set.ftl" />
 					<set id="planning" appearance="bordered-panel" label-id="becpg.forms.set.planning.label"
@@ -135,26 +131,28 @@
 					<set id="audit" appearance="bordered-panel" label-id="becpg.forms.set.audit.label"
 						template="/org/alfresco/components/form/2-column-set.ftl" />
 
-					<field id="cm:name" set="mainInfo" label="Site Address"/>
-					<field id="cm:description" set="mainInfo" />					
-					<field id="cm:title" set="mainInfo" label="Owner1"/>
+					<field id="cm:name" set="mainInfo" label="Site Address" />
+					<field id="cm:description" set="mainInfo" />
+					<field id="cm:title" set="mainInfo" label="Owner1" />
 					<field id="pjt:projectPartner" set="mainInfo" label="Owner2" />
 					<field id="pjt:projectOwner1Email" set="mainInfo" label="Email (Owner1)">
 					</field>
 					<field id="pjt:projectOwner2Email" set="mainInfo" label="Email (Owner2)">
-						
+
 					</field>
 					<field id="pjt:projectOwner1Phone" set="mainInfo" label="Phone (Owner1)" />
-					<field id="pjt:projectOwner2Phone" set="mainInfo" label="Phone (Owner2)" />					
-						
+					<field id="pjt:projectOwner2Phone" set="mainInfo" label="Phone (Owner2)" />
+
 					<field id="bcpg:code" read-only="true" set="mainInfo" />
-					<field id="pjt:projectHierarchy1" help-id="becpg.forms.help.projectHierarchy1" set="mainInfo">
+					<field id="pjt:projectHierarchy1" help-id="becpg.forms.help.projectHierarchy1"
+						set="mainInfo">
 						<control template="/org/alfresco/components/form/controls/autocomplete.ftl">
 							<control-param name="ds">becpg/autocomplete/linkedvalue/values/System/ProjectLists/bcpg:entityLists/project_Hierarchy
 							</control-param>
 						</control>
 					</field>
-					<field id="pjt:projectHierarchy2" help-id="becpg.forms.help.projectHierarchy2" set="mainInfo">
+					<field id="pjt:projectHierarchy2" help-id="becpg.forms.help.projectHierarchy2"
+						set="mainInfo">
 						<control template="/org/alfresco/components/form/controls/autocomplete.ftl">
 							<control-param name="ds">becpg/autocomplete/linkedvalue/values/System/ProjectLists/bcpg:entityLists/project_Hierarchy
 							</control-param>
@@ -162,28 +160,32 @@
 							</control-param>
 						</control>
 					</field>
-					<field id="pjt:projectOrigin" help-id="becpg.forms.help.projectOrigin" set="mainInfo" />
-					<field id="pjt:projectSponsor" help-id="becpg.forms.help.projectSponsor" set="mainInfo" />
-					<field id="pjt:projectManager" help-id="becpg.forms.help.projectManager" set="mainInfo" />
-					<field id="pjt:projectObservers" help-id="becpg.forms.help.projectObservers" set="mainInfo" />
-					<field id="bcpg:entityTplRef" help-id="becpg.forms.help.entityTplRef" set="dummy">
-						<control template="/controls/entity_tpl.ftl"/>
-					</field>					
-					<!-- field id="bcpg:entityTplRef" help-id="becpg.forms.help.entityTplRef" set="mainInfo">
-						<control
-							template="/org/alfresco/components/form/controls/autocomplete-association.ftl">
-							<control-param name="ds">becpg/autocomplete/targetassoc/associations/pjt:project?classNames=pjt:project,bcpg:entityTplAspect&amp;excludeProps=bcpg:entityTplEnabled%7Cfalse
-							</control-param>
-							<control-param name="pageLinkTemplate">entity-data-lists?list=View-properties&amp;nodeRef={nodeRef}
-							</control-param>
-						</control>
-					</field-->
-					<field id="pjt:projectEntity" help-id="becpg.forms.help.projectEntity" set="mainInfo" />
-					<field id="pjt:projectPriority" help-id="becpg.forms.help.projectPriority" set="mainInfo">
+					<field id="pjt:projectOrigin" help-id="becpg.forms.help.projectOrigin"
+						set="mainInfo" />
+					<field id="pjt:projectSponsor" help-id="becpg.forms.help.projectSponsor"
+						set="mainInfo" />
+					<field id="pjt:projectManager" help-id="becpg.forms.help.projectManager"
+						set="mainInfo" />
+					<field id="pjt:projectObservers" help-id="becpg.forms.help.projectObservers"
+						set="mainInfo" />
+					<field id="bcpg:entityTplRef" help-id="becpg.forms.help.entityTplRef"
+						set="dummy">
+						<control template="/controls/entity_tpl.ftl" />
+					</field>
+					<!-- field id="bcpg:entityTplRef" help-id="becpg.forms.help.entityTplRef" 
+						set="mainInfo"> <control template="/org/alfresco/components/form/controls/autocomplete-association.ftl"> 
+						<control-param name="ds">becpg/autocomplete/targetassoc/associations/pjt:project?classNames=pjt:project,bcpg:entityTplAspect&amp;excludeProps=bcpg:entityTplEnabled%7Cfalse 
+						</control-param> <control-param name="pageLinkTemplate">entity-data-lists?list=View-properties&amp;nodeRef={nodeRef} 
+						</control-param> </control> </field -->
+					<field id="pjt:projectEntity" help-id="becpg.forms.help.projectEntity"
+						set="mainInfo" />
+					<field id="pjt:projectPriority" help-id="becpg.forms.help.projectPriority"
+						set="mainInfo">
 						<control
 							template="/org/alfresco/components/form/controls/workflow/priority.ftl" />
 					</field>
-					<field id="pjt:projectState" help-id="becpg.forms.help.projectState" set="mainInfo">
+					<field id="pjt:projectState" help-id="becpg.forms.help.projectState"
+						set="mainInfo">
 						<control template="/org/alfresco/components/form/controls/selectone.ftl">
 							<control-param name="options">Planned|data.projectstate.planned,InProgress|data.projectstate.inprogress,OnHold|data.projectstate.onhold,Cancelled|data.projectstate.cancelled,Completed|data.projectstate.completed
 							</control-param>
@@ -195,7 +197,8 @@
 
 					<field id="pjt:projectStartDate" set="planning" />
 					<field id="pjt:projectDueDate" set="planning" />
-					<field id="pjt:projectPlanningMode" help-id="becpg.forms.help.projectPlanningMode"  set="planning" />
+					<field id="pjt:projectPlanningMode" help-id="becpg.forms.help.projectPlanningMode"
+						set="planning" />
 					<field id="pjt:projectCompletionDate" set="planning" />
 					<field id="pjt:completionPercent" set="planning" />
 					<field id="pjt:projectOverdue" set="planning" />
@@ -275,7 +278,7 @@
 				</appearance>
 			</form>
 		</forms>
-	</config>	
+	</config>
 	<!-- on create -->
 	<config condition="pjt:project" evaluator="model-type" replace="true">
 		<forms>
@@ -284,15 +287,15 @@
 					<hide id="bcpg:code" />
 					<show id="cm:name" />
 					<show id="cm:description" force="true" />
-					<!-- title is the owner1 -->			
+					<!-- title is the owner1 -->
 					<show id="cm:title" force="true" />
 					<!-- hide existing assoc (pjt:partner), show projectPartner -->
-					<!-- show id="pjt:partner" /-->
+					<!-- show id="pjt:partner" / -->
 					<show id="pjt:projectPartner" />
-					<show id="pjt:projectOwner1Email"/>
-					<show id="pjt:projectOwner2Email"/>					
-					<show id="pjt:projectOwner1Phone"/>					
-					<show id="pjt:projectOwner2Phone"/>					
+					<show id="pjt:projectOwner1Email" />
+					<show id="pjt:projectOwner2Email" />
+					<show id="pjt:projectOwner1Phone" />
+					<show id="pjt:projectOwner2Phone" />
 
 					<show id="pjt:projectHierarchy1" />
 					<show id="pjt:projectHierarchy2" />
@@ -315,7 +318,7 @@
 					<show id="cm:categories" />
 				</field-visibility>
 				<appearance>
-					<set id="dummy" appearance=""/>				
+					<set id="dummy" appearance="" />
 					<set id="mainInfo" appearance="bordered-panel"
 						label-id="becpg.forms.set.designation.label" template="/org/alfresco/components/form/2-column-set.ftl" />
 					<set id="planning" appearance="bordered-panel" label-id="becpg.forms.set.planning.label"
@@ -325,14 +328,14 @@
 					<set id="audit" appearance="bordered-panel" label-id="becpg.forms.set.audit.label"
 						template="/org/alfresco/components/form/2-column-set.ftl" />
 
-					<field id="cm:name" set="mainInfo" label="Site Address"/>
-					<field id="cm:description" set="mainInfo" />					
-					<field id="cm:title" set="mainInfo" label="Owner1"/>
+					<field id="cm:name" set="mainInfo" label="Site Address" />
+					<field id="cm:description" set="mainInfo" />
+					<field id="cm:title" set="mainInfo" label="Owner1" />
 					<field id="pjt:projectPartner" set="mainInfo" label="Owner2" />
 					<field id="pjt:projectOwner1Email" set="mainInfo" label="Email (Owner1)" />
 					<field id="pjt:projectOwner2Email" set="mainInfo" label="Email (Owner2)" />
-					<field id="pjt:projectOwner1Phone" set="mainInfo" label="Phone (Owner1)" >
-				
+					<field id="pjt:projectOwner1Phone" set="mainInfo" label="Phone (Owner1)">
+
 					</field>
 					<field id="pjt:projectOwner2Phone" set="mainInfo" label="Phone (Owner2)">
 					</field>
@@ -355,18 +358,14 @@
 					<field id="pjt:projectSponsor" set="mainInfo" />
 					<field id="pjt:projectManager" set="mainInfo" />
 					<field id="pjt:projectObservers" set="mainInfo" />
-					<!-- field id="bcpg:entityTplRef" set="mainInfo">
-						<control
-							template="/org/alfresco/components/form/controls/autocomplete-association.ftl">
-							<control-param name="ds">becpg/autocomplete/targetassoc/associations/pjt:project?classNames=pjt:project,bcpg:entityTplAspect&amp;excludeProps=bcpg:entityTplEnabled%7Cfalse
-							</control-param>
-							<control-param name="pageLinkTemplate">entity-data-lists?list=View-properties&amp;nodeRef={nodeRef}
-							</control-param>
-						</control>
-					</field-->
-					<field id="bcpg:entityTplRef" help-id="becpg.forms.help.entityTplRef" set="dummy">
-						<control template="/controls/entity_tpl.ftl"/>
-					</field>						
+					<!-- field id="bcpg:entityTplRef" set="mainInfo"> <control template="/org/alfresco/components/form/controls/autocomplete-association.ftl"> 
+						<control-param name="ds">becpg/autocomplete/targetassoc/associations/pjt:project?classNames=pjt:project,bcpg:entityTplAspect&amp;excludeProps=bcpg:entityTplEnabled%7Cfalse 
+						</control-param> <control-param name="pageLinkTemplate">entity-data-lists?list=View-properties&amp;nodeRef={nodeRef} 
+						</control-param> </control> </field -->
+					<field id="bcpg:entityTplRef" help-id="becpg.forms.help.entityTplRef"
+						set="dummy">
+						<control template="/controls/entity_tpl.ftl" />
+					</field>
 					<field id="pjt:projectEntity" set="mainInfo" />
 					<field id="pjt:projectPriority" set="mainInfo">
 						<control
@@ -531,7 +530,85 @@
 						<control template="/org/alfresco/components/form/controls/daterange.ftl" />
 					</field>
 				</appearance>
-			</form>	
+			</form>
 		</forms>
-	</config>						
+	</config>
+	<!-- on edit -->
+	<config condition="sfcore:todoList" evaluator="node-type">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="sfcore:todoTitle" />
+					<show id="sfcore:todoDueDate" />
+					<show id="sfcore:todoPriority" />
+					<show id="sfcore:todoStatus" />
+					<show id="sfcore:todoNotes" />
+					<show id="sfcore:assignee" />
+					<show id="sfcore:attachments" />
+				</field-visibility>
+				<appearance>
+					<field id="sfcore:todoNotes">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+					<field id="sfcore:attachments">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="sfcore:todoDueDate">
+						<control template="/org/alfresco/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+						</control>
+					</field>
+				</appearance>
+			</form>
+		</forms>
+	</config>
+	<!-- on create -->
+	<config condition="sfcore:todoList" evaluator="model-type">
+		<forms>
+			<form>
+				<field-visibility>
+					<show id="sfcore:todoTitle" />
+					<show id="sfcore:todoDueDate" />
+					<show id="sfcore:todoPriority" />
+					<show id="sfcore:todoStatus" />
+					<show id="sfcore:todoNotes" />
+					<show id="sfcore:assignee" />
+					<show id="sfcore:attachments" />
+				</field-visibility>
+				<appearance>
+					<field id="sfcore:todoNotes">
+						<control template="/org/alfresco/components/form/controls/textarea.ftl" />
+					</field>
+					<field id="sfcore:attachments">
+						<control>
+							<control-param name="startLocation">{doclib}</control-param>
+						</control>
+					</field>
+					<field id="sfcore:todoDueDate">
+						<control template="/org/alfresco/components/form/controls/date.ftl">
+							<control-param name="showTime">false</control-param>
+						</control>
+					</field>					
+				</appearance>
+			</form>
+			<!-- Data Grid view -->
+			<form id="datagrid">
+				<field-visibility>
+					<show id="sfcore:todoTitle" />
+					<show id="sfcore:todoDueDate" />
+					<show id="sfcore:todoPriority" />
+					<show id="sfcore:todoStatus" />
+					<show id="sfcore:assignee" />
+					<show id="sfcore:attachments" />
+				</field-visibility>
+			</form>
+			<form id="filter">
+				<field-visibility>
+					<show id="sfcore:todoTitle" />
+				</field-visibility>
+			</form>
+		</forms>
+	</config>
 </alfresco-config>
